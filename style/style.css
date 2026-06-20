@@ -317,9 +317,10 @@ img {
   padding: 32px;
   grid-area: main;
   width: 100%;
+  min-width: 0; /* allow the grid item to shrink instead of overflowing #outer */
   background-color: #fbf9fa;
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: repeat(9, minmax(0, 1fr));
   gap: 24px;
   grid-template-areas:
     "grid1 grid1 grid1 grid1 grid1 grid1 grid1 grid1 grid1"
@@ -1069,6 +1070,9 @@ tbody tr td {
     height: 210px;
     margin: 16px 0;
     position: relative;
+    &:last-child {
+      margin-bottom: 0;
+    }
     &:hover .visa {
       transform: rotateY(180deg);
     }
@@ -1658,7 +1662,7 @@ tbody tr td {
     padding: 16px;
     padding-top: 72px; /* room for the floating toggle */
     gap: 16px;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
       "grid1"
       "grid2"
